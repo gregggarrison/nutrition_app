@@ -1,38 +1,153 @@
-.App {
-  text-align: center;
+nav{
+    display: flex;
+    margin-left: 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-link{
+    margin-left: 4px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 750px;
+    height: 400px;  
+    padding-bottom: 3%;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .search-img{
+    max-width: -webkit-fill-available;
   }
-  to {
-    transform: rotate(360deg);
+  
+  a.blog-header-logo text-dark{
+    font-size: xx-large;
   }
-}
+  
+  div.col-4 text-center {
+    font-size: xxx-large;
+  }
+  
+  div.col-4 text-center {
+    font-size: xxx-large;
+  }
+  
+  div.a.blog-header-logo text-dark {
+    font-size: xxx-large;
+  }
+  
+  .recipes {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  img {
+    height: 413.8px;
+  }
+  
+  .text-left img{
+    padding-bottom: 3%;
+  }
+  
+  p.intro {
+    align-items: center;
+    justify-content: center;
+    padding-top: 1%;
+  }
+  
+  li{
+    list-style-type: none;
+  }
+  
+  div.about-me{
+    padding-top: 4%;
+  }
+
+  ul{
+      margin-right: 5px;
+  }
+
+  #stupid{
+      display: flex;
+      flex-direction: column;
+  }
+
+  .search-img{
+    height: 200px;
+    width: 200px;
+  }
+
+  .form-container {
+    display: flex;
+    /* height: 27px; */
+    /* padding-bottom: 5%; */
+    /* padding-top: 5%; */
+    width: 350px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    justify-content: space-between;
+  }
+
+  #clear-btn{
+    cursor: pointer;
+    box-shadow: rgba(255, 255, 255, 0.05) 0px 3px 20px;
+    border-width: initial;
+    background-color: grey;
+    color: white;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    outline: none;
+  }
+
+  body {
+    font-family: 'open sans', sans-serif;
+    font-size: 16px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead th {
+    text-align: left;
+    border-bottom: 2px solid black;
+  }
+  
+  thead button {
+    border: 0;
+    border-radius: none;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: inherit;
+    padding: 0.5em;
+    margin-bottom: 1px;
+  }
+  
+  thead button.ascending::after {
+    content: '👇';
+    display: inline-block;
+    margin-left: 1em;
+  }
+  
+  thead button.descending::after {
+    content: '☝️';
+    display: inline-block;
+    margin-left: 1em;
+  }
+  
+  tbody td {
+    padding: 0.5em;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  tbody tr:hover {
+    background-color: #eee;
+  }
+  
+  p.date{
+    /* margin-left: 3px; */
+    /* margin-top: 5px; */
+    color: blue;
+  }
