@@ -1,6 +1,5 @@
 import React from 'react'
 import TodayMealsTableRows from './TodayMealsTableRows'
-import Summary from './Summary'
 
 function TodayMeals(props) {
     const { todayMeals } = props
@@ -19,7 +18,9 @@ function TodayMeals(props) {
     return (
 
         <div>
-            <h3>{props.date}</h3>
+            <div className="date-weather">
+                <h3>{props.date}</h3>
+            </div>
             <table className="table table-sm" id="results-table">
                 <thead>
                     <tr>

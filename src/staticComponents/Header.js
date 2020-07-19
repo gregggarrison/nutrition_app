@@ -1,12 +1,21 @@
 import React from 'react'
 
-const Header = () => {
+const Header = (props) => {
+    const currentWeather = props.weather.current
+
     return (
         <>
             <header className="blog-header py-3">
                 <div className="row flex-nowrap justify-content-between align-items-center">
                     <div className="col-4 pt-1">
-                        <a className="text-muted" href="./" >Subscribe</a>
+                        {currentWeather ?
+                            <div className="date-weather">
+                                <p>{currentWeather.feelslike}F</p>
+                                <img className="weather-img" alt="" src={currentWeather.weather_icons[0]}></img>
+                                <p>{props.date}</p>
+                            </div>
+                            : null
+                        }
                     </div>
 
                     <div className="col-4 text-center" >

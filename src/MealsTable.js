@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import NutritionLabel from './NutritionLabel'
-import TodayMeals from './TodayMeals'
 
 function MealsTable(props) {
     const { meal, addToMeals, addToTodayMeals } = props
 
-    // const nutrients = meal.full_nutrients
+    const [isActive, setActive] = useState(true)
+    const toggleClass = () => {
+        setActive(!isActive)
+    }
 
     function findNutrient(id) {
         if (meal.full_nutrients) {
@@ -36,13 +38,13 @@ function MealsTable(props) {
     const cholest = findNutrient(601)
     const lCholest = toNumberUnits(cholest, 1)
 
-    const sodium = findNutrient(307)
-    const lSodium = toNumberUnits(sodium, 1)
+    // const sodium = findNutrient(307)
+    // const lSodium = toNumberUnits(sodium, 1)
 
-    const sugar = findNutrient(269)
-    const lSugar = toNumberUnits(sugar, 1)
-    const sFat = findNutrient(606)
-    const transFat = findNutrient(605)
+    // const sugar = findNutrient(269)
+    // const lSugar = toNumberUnits(sugar, 1)
+    // const sFat = findNutrient(606)
+    // const transFat = findNutrient(605)
 
     function handleClick(event) {
         const mealData = {
@@ -76,13 +78,11 @@ function MealsTable(props) {
         <div>
             {meal.tag_id
                 ?
-
                 <div>
-
-
                     <table className="table table-sm" id="results-table">
                         <thead>
                             <tr>
+                                <th scope="col"></th>
                                 <th scope="col">Food</th>
                                 <th scope="col">Qty</th>
                                 <th scope="col">Unit</th>
@@ -96,6 +96,9 @@ function MealsTable(props) {
                         </thead>
                         <tbody>
                             <tr>
+                                <td>
+                                    <img onClick={toggleClass} className="fetch-img" alt="" src={meal.photo.thumb}></img>
+                                </td>
                                 <td id="food">{meal.food_name}</td>
                                 <td id="qty">{meal.serving_qty}</td>
                                 <td id="unit">{meal.serving_unit}</td>
@@ -113,7 +116,7 @@ function MealsTable(props) {
                         </tbody>
                     </table>
 
-                    <div className="row mb-2">
+                    <div className={isActive ? "row mb-2 hidden" : "row mb-2"}>
                         <div className="col-md-6">
                             <img className="search-img"
                                 alt=""
@@ -126,12 +129,9 @@ function MealsTable(props) {
                         </div>
                     </div>
                 </div>
-        
+
                 : null
             }
-
-
-
         </div>
     )
 }

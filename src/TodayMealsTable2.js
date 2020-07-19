@@ -3,7 +3,7 @@ import React from 'react'
 import './App.css'
 const useSortableData = (items, config = null) => {
     const [sortConfig, setSortConfig] = React.useState(config);
-    
+
     const sortedItems = React.useMemo(() => {
         let sortableItems = [...items];
         if (sortConfig !== null) {
@@ -13,17 +13,16 @@ const useSortableData = (items, config = null) => {
                         return sortConfig.direction === 'ascending' ? -1 : 1;
                     }
                     if ((a[sortConfig.key]) > (b[sortConfig.key])) {
-                        
+
                         return sortConfig.direction === 'ascending' ? 1 : -1;
                     }
                     return 0;
                 } else {
-                    
                     if (parseInt(a[sortConfig.key]) < parseInt(b[sortConfig.key])) {
                         return sortConfig.direction === 'ascending' ? -1 : 1;
                     }
                     if (parseInt(a[sortConfig.key]) > parseInt(b[sortConfig.key])) {
-                        
+
                         return sortConfig.direction === 'ascending' ? 1 : -1;
                     }
                     return 0;
@@ -32,39 +31,32 @@ const useSortableData = (items, config = null) => {
         }
         return sortableItems;
     }, [items, sortConfig]);
-    
+
     const requestSort = (key) => {
         let direction = 'ascending';
         if (
             sortConfig &&
             sortConfig.key === key &&
             sortConfig.direction === 'ascending'
-            ) {
-                direction = 'descending';
-            }
-            setSortConfig({ key, direction });
-        };
-        return { items: sortedItems, requestSort, sortConfig };
-    };
-    
-    const TodayMealsTable2 = (props) => {
-        const { meals, meal } = props;
-        const { items, requestSort, sortConfig } = useSortableData(props.meals);
-        const getClassNamesFor = (name) => {
-            if (!sortConfig) {
-                return;
-            }
-            return sortConfig.key === name ? sortConfig.direction : undefined;
-        };
-        
-        function fixDate() {
-            let mealDate = new Date(meal.created_at).toDateString()
-            return mealDate
+        ) {
+            direction = 'descending';
         }
-        
-        return (
-            <table className="table table-sm" id="results-table">
-            <caption>Snapshot</caption>
+        setSortConfig({ key, direction });
+    };
+    return { items: sortedItems, requestSort, sortConfig };
+};
+
+const TodayMealsTable2 = (props) => {
+    const { items, requestSort, sortConfig } = useSortableData(props.meals);
+    const getClassNamesFor = (name) => {
+        if (!sortConfig) {
+            return;
+        }
+        return sortConfig.key === name ? sortConfig.direction : undefined;
+    };
+
+    return (
+        <table className="table table-sm" id="results-table">
             <thead>
                 <tr>
                     <th scope="col">
@@ -135,7 +127,7 @@ const useSortableData = (items, config = null) => {
             <tbody>
                 {items.map(meal => (
                     <tr key={meal.id}>
-                        <td id="date">{meal.created_at.split('T',1)}</td>
+                        <td id="date">{meal.created_at.split('T', 1)}</td>
                         <td id="food">{meal.foodName}</td>
                         <td id="qty">{meal.serveQty}</td>
                         <td id="unit">{meal.serveUnit}</td>

@@ -13,6 +13,9 @@ import Summary from './Summary'
 import TodayMealsTable2 from './TodayMealsTable2'
 
 const mealsURL = "http://localhost:3000/meals/"
+const key = process.env.REACT_APP_WEATHER_API_KEY
+const weatherURL = "http://api.weatherstack.com/current?units=f&query=Denver&access_key=" + key
+
 
 class App extends Component {
 
@@ -20,15 +23,24 @@ class App extends Component {
     meals: [],
     todayMeals: [],
     date: "",
+    weather: []
   }
 
   componentDidMount() {
     this.getDate()
+    this.getWeather()
     fetch(mealsURL)
       .then(response => response.json())
       .then(meals => this.setState({ meals }))
       .then(this.filterMealDate)
   }
+
+  getWeather = () => {
+    fetch(weatherURL)
+      .then(response => response.json())
+      .then(weather => this.setState({ weather }))
+  }
+
 
   addToMeals = (meal) => {
     console.log(meal)
@@ -91,7 +103,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="container">
-          <Header />
+          <Header date={this.state.date} weather={this.state.weather} />
           <Nav date={this.state.date} />
 
           <Route exact path="/"
@@ -116,7 +128,7 @@ class App extends Component {
                 tallyFat={this.tallyFat}
                 date={this.state.date}
                 deleteMeal={this.deleteMeal}
-              
+
               />}
           />
 
@@ -129,6 +141,8 @@ class App extends Component {
                   addToTodayMeals={this.addToTodayMeals}
                   todayMeals={this.state.todayMeals}
                   date={this.state.date}
+                  tallyCalories={this.tallyCalories}
+                  tallyFat={this.tallyFat}
                 />
 
                 <TodayMeals

@@ -12,7 +12,6 @@ function Nav(props) {
                 <Link to='/today-meals2' className="p-2 text-muted">All Meals(sortable)</Link>
                 <a href="http://localhost:3002/exercise.html" className="p-2 text-muted">Workouts</a>
             </nav>
-            <p className="date">{props.date}</p>
         </div>
     )
 }

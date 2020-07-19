@@ -72,9 +72,9 @@ nav{
       flex-direction: column;
   }
 
-  .search-img{
-    height: 200px;
-    width: 200px;
+  img.search-img{
+    height: 324px;
+    width: 300px;
   }
 
   .form-container {
@@ -146,8 +146,29 @@ nav{
     background-color: #eee;
   }
   
-  p.date{
-    /* margin-left: 3px; */
-    /* margin-top: 5px; */
-    color: blue;
-  }
+.date-weather{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+}
+.weather-img{
+  height: 50px;
+  width: 50px;
+}
+
+
+.fetch-img{
+  width: 50px;
+  height: 50px;
+}
+
+.hidden{
+  display: none;
+}
+
+.summary-totals{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}

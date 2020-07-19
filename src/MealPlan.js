@@ -9,6 +9,8 @@ function MealPlan(props) {
                 addToMeals={props.addToMeals}
                 addToTodayMeals={props.addToTodayMeals}
                 todayMeals={props.todayMeals}
+                tallyCalories={props.tallyCalories}
+                tallyFat={props.tallyFat}
             />
         </>
     )
