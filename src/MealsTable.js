@@ -5,10 +5,20 @@ function MealsTable(props) {
     const { meal, addToMeals, addToTodayMeals } = props
 
     const [isActive, setActive] = useState(true)
-    const [serveQty, setServQty] = useState(null)
+    const [serveQty, setServQty] = useState(1)
 
     const toggleClass = () => {
         setActive(!isActive)
+    }
+
+    function handleChange(event) {
+        if(meal.serving_qty ===1){
+            setServQty(event.target.value)
+        }
+    }
+
+    function resetState() {
+        setServQty(1)
     }
 
     function findNutrient(id) {
@@ -23,22 +33,22 @@ function MealsTable(props) {
     }
 
     const fiber = findNutrient(291)
-    const lFiber = toNumberUnits(fiber, 1)
+    const lFiber = toNumberUnits(fiber, 0)
 
     const calories = findNutrient(208)
-    const lCalories = toNumberUnits(calories, 1)
+    const lCalories = toNumberUnits(calories, 0)
 
     const totalFat = findNutrient(204)
-    const lTotalFat = toNumberUnits(totalFat, 1)
+    const lTotalFat = toNumberUnits(totalFat, 0)
 
     const protein = findNutrient(203)
-    const lProtein = toNumberUnits(protein, 1)
+    const lProtein = toNumberUnits(protein, 0)
 
     const carbs = findNutrient(205)
-    const lCarbs = toNumberUnits(carbs, 1)
+    const lCarbs = toNumberUnits(carbs, 0)
 
     const cholest = findNutrient(601)
-    const lCholest = toNumberUnits(cholest, 1)
+    const lCholest = toNumberUnits(cholest, 0)
 
     // const sodium = findNutrient(307)
     // const lSodium = toNumberUnits(sodium, 1)
@@ -48,22 +58,18 @@ function MealsTable(props) {
     // const sFat = findNutrient(606)
     // const transFat = findNutrient(605)
 
-    function handleChange(event) {
-        setServQty(event.target.value)
-    }
-
 
     function handleClick(event) {
         const mealData = {
             date: new Date().toDateString(),
             foodName: meal.food_name,
-            serveQty: serveQty,
+            serveQty: meal.serving_qty * serveQty,
             serveUnit: meal.serving_unit,
-            calories: parseInt(lCalories * serveQty),
-            allFat: parseInt(lTotalFat * serveQty),
-            protein: parseInt(lProtein * serveQty),
-            carbohydrates: parseInt(lCarbs * serveQty),
-            cholesterol: parseInt(lCholest * serveQty)
+            calories: (lCalories * serveQty),
+            allFat: (lTotalFat * serveQty),
+            protein: (lProtein * serveQty),
+            carbohydrates: (lCarbs * serveQty),
+            cholesterol: (lCholest * serveQty)
         }
         addToTodayMeals(mealData)
         addToMeals(mealData)
@@ -75,6 +81,7 @@ function MealsTable(props) {
         })
 
         props.clearForm()
+        resetState()
     }
 
     function handleClear(event) {
@@ -110,27 +117,15 @@ function MealsTable(props) {
                                 <td id="food">{meal.food_name}</td>
 
 
-                                {/* <td id="qty"> */}
                                 <td>
                                     <input
-                                     id="search-qty"
-                                      type='number'
-                                       min={meal.serving_qty} 
-                                    //    value={meal.serving_qty} 
-                                       onChange={handleChange}>
+                                        id="search-qty"
+                                        type='number'
+                                        min={meal.serving_qty}
+                                        value={meal.serving_qty === 1 ? serveQty : meal.serving_qty}
+                                        onChange= { handleChange }>
                                     </input>
                                 </td>
-                                {/* <select type="text" onChange={handleChange}>
-                                        <option >
-                                       {options}
-
-                                        </option>
-                                    </select> */}
-
-
-                                {/* </td> */}
-
-
                                 <td id="unit">{meal.serving_unit}</td>
                                 <td id="calories">{parseInt(lCalories * serveQty)}</td>
                                 <td id="total-fat">{parseInt(lTotalFat * serveQty)}</td>
@@ -165,7 +160,5 @@ function MealsTable(props) {
         </div>
     )
 }
-
-
 
 export default MealsTable

@@ -83,7 +83,7 @@ nav{
     /* padding-bottom: 5%; */
     /* padding-top: 5%; */
     width: 350px;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-bottom: 3%;
     justify-content: space-between;
   }
@@ -175,4 +175,25 @@ nav{
 
 .table td{
   vertical-align: middle;
+}
+
+input#search-qty{
+  width: 45px;
+  font-weight: bold;
+}
+
+header{
+  background-color: rgba(178, 208, 218, 0.336);
+
+  padding: 1%;
+  padding-top: 3%;
+}
+
+.nav-scroller {
+  background-color: beige;
+}
+
+nav{
+  background-color: beige;
+  margin-right: 20px;
 }
