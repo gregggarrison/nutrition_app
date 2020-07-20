@@ -80,7 +80,7 @@ const NutritionLabel = props => {
                     </tr>
                     <tr>
                         <td id="font-size-7pt" >
-                            <div className="line">Amount Per Serving</div>
+                            <div className="line">Amount Per Serving: {meal.serving_qty} {meal.serving_unit}</div>
                         </td>
                         <td></td>
                     </tr>
@@ -164,7 +164,7 @@ const NutritionLabel = props => {
                             <div className="line">
                                 <div className="labellight">Dietary Fiber <div id="lFiber" className="weight">{lFiber}</div>
                                 </div>
-                                <div id="lFiberDV" className="dv">{fiberDV}</div>
+                                <div id="lFiberDV" className="dv"></div>
                             </div>
                         </td>
                     </tr>

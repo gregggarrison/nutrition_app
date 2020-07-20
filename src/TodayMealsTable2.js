@@ -127,7 +127,9 @@ const TodayMealsTable2 = (props) => {
             <tbody>
                 {items.map(meal => (
                     <tr key={meal.id}>
-                        <td id="date">{meal.created_at.split('T', 1)}</td>
+                        {meal.created_at
+                        ? <td id="date">{meal.created_at.split('T', 1)}</td>
+                        : "Today"}
                         <td id="food">{meal.foodName}</td>
                         <td id="qty">{meal.serveQty}</td>
                         <td id="unit">{meal.serveUnit}</td>

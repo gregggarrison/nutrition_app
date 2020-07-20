@@ -5,6 +5,8 @@ function MealsTable(props) {
     const { meal, addToMeals, addToTodayMeals } = props
 
     const [isActive, setActive] = useState(true)
+    const [serveQty, setServQty] = useState(null)
+
     const toggleClass = () => {
         setActive(!isActive)
     }
@@ -46,17 +48,22 @@ function MealsTable(props) {
     // const sFat = findNutrient(606)
     // const transFat = findNutrient(605)
 
+    function handleChange(event) {
+        setServQty(event.target.value)
+    }
+
+
     function handleClick(event) {
         const mealData = {
             date: new Date().toDateString(),
             foodName: meal.food_name,
-            serveQty: meal.serving_qty,
+            serveQty: serveQty,
             serveUnit: meal.serving_unit,
-            calories: lCalories,
-            allFat: lTotalFat,
-            protein: lProtein,
-            carbohydrates: lCarbs,
-            cholesterol: lCholest
+            calories: parseInt(lCalories * serveQty),
+            allFat: parseInt(lTotalFat * serveQty),
+            protein: parseInt(lProtein * serveQty),
+            carbohydrates: parseInt(lCarbs * serveQty),
+            cholesterol: parseInt(lCholest * serveQty)
         }
         addToTodayMeals(mealData)
         addToMeals(mealData)
@@ -99,15 +106,38 @@ function MealsTable(props) {
                                 <td>
                                     <img onClick={toggleClass} className="fetch-img" alt="" src={meal.photo.thumb}></img>
                                 </td>
+
                                 <td id="food">{meal.food_name}</td>
-                                <td id="qty">{meal.serving_qty}</td>
+
+
+                                {/* <td id="qty"> */}
+                                <td>
+                                    <input
+                                     id="search-qty"
+                                      type='number'
+                                       min={meal.serving_qty} 
+                                    //    value={meal.serving_qty} 
+                                       onChange={handleChange}>
+                                    </input>
+                                </td>
+                                {/* <select type="text" onChange={handleChange}>
+                                        <option >
+                                       {options}
+
+                                        </option>
+                                    </select> */}
+
+
+                                {/* </td> */}
+
+
                                 <td id="unit">{meal.serving_unit}</td>
-                                <td id="calories">{lCalories}</td>
-                                <td id="total-fat">{lTotalFat}</td>
-                                <td id="protein">{lProtein}</td>
-                                <td id="fiber">{lFiber}</td>
-                                <td id="carbs">{lCarbs}</td>
-                                <td id="cholesterol">{lCholest}</td>
+                                <td id="calories">{parseInt(lCalories * serveQty)}</td>
+                                <td id="total-fat">{parseInt(lTotalFat * serveQty)}</td>
+                                <td id="protein">{parseInt(lProtein * serveQty)}</td>
+                                <td id="fiber">{parseInt(lFiber * serveQty)}</td>
+                                <td id="carbs">{parseInt(lCarbs * serveQty)}</td>
+                                <td id="cholesterol">{parseInt(lCholest * serveQty)}</td>
                                 <td>
                                     <button className="save-button" onClick={handleClick}>Save</button>
                                     <button className="clear-button" onClick={handleClear}>Clear</button>
@@ -125,7 +155,7 @@ function MealsTable(props) {
                             </img>
                         </div>
                         <div className="col-md-6">
-                            <NutritionLabel meal={props.meal} />
+                            <NutritionLabel meal={props.meal} qty={serveQty} />
                         </div>
                     </div>
                 </div>
