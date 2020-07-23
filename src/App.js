@@ -11,6 +11,9 @@ import Header from './staticComponents/Header'
 import MealPlan from './MealPlan'
 import Summary from './Summary'
 import TodayMealsTable2 from './TodayMealsTable2'
+import Recipes from './Recipes'
+
+
 
 const mealsURL = "http://localhost:3000/meals/"
 const key = process.env.REACT_APP_WEATHER_API_KEY
@@ -28,18 +31,22 @@ class App extends Component {
 
   componentDidMount() {
     this.getDate()
-    this.getWeather()
+    // this.getWeather()
     fetch(mealsURL)
       .then(response => response.json())
       .then(meals => this.setState({ meals }))
       .then(this.filterMealDate)
-  }
 
-  getWeather = () => {
     fetch(weatherURL)
       .then(response => response.json())
       .then(weather => this.setState({ weather }))
   }
+
+  // getWeather = () => {
+  //   fetch(weatherURL)
+  //     .then(response => response.json())
+  //     .then(weather => this.setState({ weather }))
+  // }
 
 
   addToMeals = (meal) => {
@@ -161,8 +168,14 @@ class App extends Component {
                 />
 
               </>}
+
+
           />
 
+          <Route exact path="/recipes"
+            render={(routerProps) =>
+              <Recipes />}
+          />
         </div >
       </div>
     );

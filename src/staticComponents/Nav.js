@@ -10,7 +10,7 @@ function Nav(props) {
                 <Link to='/meal-plan' className="p-2 text-muted">Daily Snapshot </Link>
                 <Link to='/all-meals' className="p-2 text-muted">All Meals </Link>
                 <Link to='/today-meals2' className="p-2 text-muted">All Meals(sortable)</Link>
-                <a href="http://localhost:3002/exercise.html" className="p-2 text-muted">Workouts</a>
+                <Link to='./recipes' className="p-2 text-muted">Recipes</Link>
             </nav>
         </div>
     )
