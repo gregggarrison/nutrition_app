@@ -8,7 +8,6 @@ function MealsTableRows(props) {
         let mealDate = new Date(meal.created_at).toDateString()
         return mealDate
     }
-    
 
     return (
         <tr>

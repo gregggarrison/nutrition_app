@@ -34,30 +34,3 @@ function TodayMealsTableRows(props) {
 export default TodayMealsTableRows
 
 
-// import React from 'react'
-// import TodayMealsTableRows from './TodayMealsTableRows'
-
-
-
-// const TodayMealsTable2 = (props) => {
-//     const { todayMeals } = props;
-//     const [sortedField, setSortedField] = React.useState(null);
-//     let sortedMeals = [...todayMeals];
-//     if (sortedField !== null) {
-//         sortedMeals.sort((a, b) => {
-//             if (a[sortedField] < b[sortedField]) {
-//                 return -1;
-//             }
-//             if (a[sortedField] > b[sortedField]) {
-//                 return 1;
-//             }
-//             return 0;
-//         });
-//     }
-//     return (
-//         <table></table>
-//     )
-// }
-// export default TodayMealsTable2
-
-

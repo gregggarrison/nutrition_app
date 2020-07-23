@@ -13,12 +13,9 @@ import Summary from './Summary'
 import TodayMealsTable2 from './TodayMealsTable2'
 import Recipes from './Recipes'
 
-
-
 const mealsURL = "http://localhost:3000/meals/"
 const key = process.env.REACT_APP_WEATHER_API_KEY
 const weatherURL = "http://api.weatherstack.com/current?units=f&query=Denver&access_key=" + key
-
 
 class App extends Component {
 
@@ -26,7 +23,8 @@ class App extends Component {
     meals: [],
     todayMeals: [],
     date: "",
-    weather: []
+    weather: [],
+    recipes: []
   }
 
   componentDidMount() {
@@ -47,7 +45,6 @@ class App extends Component {
   //     .then(response => response.json())
   //     .then(weather => this.setState({ weather }))
   // }
-
 
   addToMeals = (meal) => {
     console.log(meal)
@@ -168,8 +165,6 @@ class App extends Component {
                 />
 
               </>}
-
-
           />
 
           <Route exact path="/recipes"
