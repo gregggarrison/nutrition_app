@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import RMealsTable from './RMealsTable'
 
+
+
 class RSearchForm extends Component {
 
     state = {
@@ -50,10 +52,10 @@ class RSearchForm extends Component {
 
                 <RMealsTable
                     meal={this.state.meal}
+                    ingredient={this.state.meal}
                     addToRecipes={this.props.addToRecipes}
-                    addToTodayMeals={this.props.addToTodayMeals}
+                    addToIngredients={this.props.addToIngredients}
                     clearForm={this.clearForm}
-                    todayMeals={this.props.todayMeals}
                 />
             </>
         )

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import NutritionLabel from './NutritionLabel'
 
+
 function RMealsTable(props) {
     const { meal, addToMeals, addToTodayMeals } = props
 
