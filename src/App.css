@@ -200,5 +200,16 @@ nav{
 
 
 .new-recipe{
-  width: 400px;
+  width: tofit;
+}
+
+.form-row{
+  padding-top: 3px;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.ingredient-search{
+  padding-top: 15px;
 }

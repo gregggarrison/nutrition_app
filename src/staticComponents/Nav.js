@@ -11,6 +11,7 @@ function Nav(props) {
                 <Link to='/all-meals' className="p-2 text-muted">All Meals </Link>
                 <Link to='/today-meals2' className="p-2 text-muted">All Meals(sortable)</Link>
                 <Link to='./recipes' className="p-2 text-muted">Recipes</Link>
+                <Link to='./login' className="p-2 text-muted">Login</Link>
             </nav>
         </div>
     )

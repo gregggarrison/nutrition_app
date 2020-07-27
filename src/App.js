@@ -12,6 +12,7 @@ import MealPlan from './MealPlan'
 import Summary from './Summary'
 import TodayMealsTable2 from './TodayMealsTable2'
 import Recipes from './Recipes'
+import Login from './Login'
 
 const mealsURL = "http://localhost:3000/meals/"
 const key = process.env.REACT_APP_WEATHER_API_KEY
@@ -29,7 +30,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getDate()
-    // this.getWeather()
+    this.getWeather()
     fetch(mealsURL)
       .then(response => response.json())
       .then(meals => this.setState({ meals }))
@@ -40,11 +41,11 @@ class App extends Component {
       .then(weather => this.setState({ weather }))
   }
 
-  // getWeather = () => {
-  //   fetch(weatherURL)
-  //     .then(response => response.json())
-  //     .then(weather => this.setState({ weather }))
-  // }
+  getWeather = () => {
+    fetch(weatherURL)
+      .then(response => response.json())
+      .then(weather => this.setState({ weather }))
+  }
 
   addToMeals = (meal) => {
     console.log(meal)
@@ -114,6 +115,10 @@ class App extends Component {
             render={(routerProps) =>
               <Intro />}
           />
+          <Route exact path="/login"
+            render={(routerProps) =>
+              <Login />}
+          />
 
           <Route exact path="/all-meals"
             render={(routerProps) =>
@@ -171,6 +176,9 @@ class App extends Component {
             render={(routerProps) =>
               <Recipes />}
           />
+
+
+          
         </div >
       </div>
     );

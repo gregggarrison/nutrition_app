@@ -42,10 +42,10 @@ class RSearchForm extends Component {
         return (
             <>
                 <div className="form-container">
-                    <form id="search-form" onSubmit={this.handleSubmit}>
+                    <form id="search-form" >
                         <div className="label-container">
                             <input type="text" placeholder="food/beverage search" name="search" onChange={this.handleChange}></input>
-                            <input type="submit" id="search"></input>
+                            <button onClick={this.handleSubmit} id="search">Search</button>
                         </div>
                     </form>
                 </div>
